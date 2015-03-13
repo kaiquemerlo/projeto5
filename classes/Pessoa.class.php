@@ -21,7 +21,7 @@ class Pessoa{
 	}
 
 	// Método responsavel por listar os clientes e seus respectivos links
-	public function listaClientes(){
+	public function listaClientes($odem=null){
 		self::$indice ++;
 		$i = self::$indice - 1;
 		echo "<tr><td><a href='index.php?indice=$i'>$this->nome</a></td></tr>";
@@ -29,12 +29,34 @@ class Pessoa{
 
 	// Método responsavel por listar os dados gerais dos clientes
 	public function dadosCliente(){
-		echo $this->nome;
-		echo $this->cpf;
-		echo $this->rg;
-		echo $this->peso;
-		echo $this->idade;
-		echo $this->endereco;
+		$layout = <<<EOF
+		<tr>
+			<td>Nome:</td>
+			<td>$this->nome</td>
+		</tr>
+		<tr>
+			<td>CPF:</td>
+			<td>$this->cpf</td>
+		</tr>
+		<tr>
+			<td>RG:</td>
+			<td>$this->rg</td>
+		</tr>
+		<tr>
+			<td>Peso:</td>
+			<td>$this->peso</td>
+		</tr>
+		<tr>
+			<td>Idade:</td>
+			<td>$this->idade</td>
+		</tr>
+		<tr>
+			<td>Endereco:</td>
+			<td>$this->endereco</td>
+		</tr>
+EOF;
+
+		echo $layout;
 	}
 
 }
