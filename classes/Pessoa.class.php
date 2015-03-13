@@ -24,7 +24,7 @@ class Pessoa{
 	public function listaClientes(){
 		self::$indice ++;
 		$i = self::$indice - 1;
-		echo "<a href='index.php?indice=$i'>$this->nome</a><br>";
+		echo "<tr><td><a href='index.php?indice=$i'>$this->nome</a></td></tr>";
 	}
 
 	// Método responsavel por listar os dados gerais dos clientes

@@ -75,23 +75,70 @@ $dadosPessoa = array(
 		"Avenida Castro da Cunha, 667"
 	)
 );
-
-$contar = sizeof($dadosPessoa['Nome']); // conta quantas pessoas tem
-
-for($i = 0; $i < $contar; $i++){
-	$pessoa = new Pessoa($dadosPessoa['Nome'][$i], $dadosPessoa['CPF'][$i]);
-	$pessoa->listaClientes();
-}
-
-$indice = $_GET['indice'];
-if(isset($_GET['indice'])){
-	for($i = 0; $i < $contar; $i++){
-		if($indice == $i){
-			$pessoa = new Pessoa($dadosPessoa['Nome'][$i], $dadosPessoa['CPF'][$i], $dadosPessoa['RG'][$i], $dadosPessoa['Peso'][$i], $dadosPessoa['Idade'][$i], $dadosPessoa['Endereco'][$i]);
-			$pessoa->dadosCliente();
-		}
-	}
-}
-
-
  ?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>Lista de clientes</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+	
+
+<div class="container">
+	
+	<div class="col-md-12">
+		<table class="table table-bordered table-striped">
+			<?php 
+
+				$contar = sizeof($dadosPessoa['Nome']); // conta quantas pessoas tem
+
+				for($i = 0; $i < $contar; $i++){
+					$pessoa = new Pessoa($dadosPessoa['Nome'][$i], $dadosPessoa['CPF'][$i]);
+					$pessoa->listaClientes();
+				}
+
+				
+				if(isset($_GET['indice'])){
+					$indice = $_GET['indice'];
+					for($i = 0; $i < $contar; $i++){
+						if($indice == $i){
+							$pessoa = new Pessoa($dadosPessoa['Nome'][$i], $dadosPessoa['CPF'][$i], $dadosPessoa['RG'][$i], $dadosPessoa['Peso'][$i], $dadosPessoa['Idade'][$i], $dadosPessoa['Endereco'][$i]);
+							$pessoa->dadosCliente();
+						}
+					}
+				}
+
+ 			?>
+		</table>
+	</div>
+
+</div>
+
+            <a href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#basicModal">Click to open Modal</a>
+            <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&amp;times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                        </div>
+                        <div class="modal-body">
+                            <h3>Modal Body</h3>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+              </div>
+            </div>
+	
+
+
+</body>
+</html>
+
